@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Task Day 2</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body style="font-family: Poppins;">
+    <nav>
+        <div class="nav-left">
+            <ul>
+                <li>
+                    <img src="./assets/img/logo.png" alt="logo" class="img-logo" />
+                </li>
+                <li class="item-collapse">
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="item-collapse">
+                    <a href="#">My Project</a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <a href="contact.html" class="btn btn-black border-radius active">Contact</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="container mt-80">
+            <h1 class="text-center">GET IN TOUCH</h1>
+            <form action="" class="contact-form">
+                <div class="form-input">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name">
+                </div>
+
+                <div class="form-input">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+                </div>
+
+                <div class="form-input">
+                    <label for="phone-number">Phone Number</label>
+                    <input type="text" name="phone-number" id="phone-number" inputmode="numeric">
+                </div>
+
+                <div class="form-input">
+                    <label for="subject">Subject</label>
+                    <select name="subject" id="subject">
+                        <option value="mathematics">Mathematics</option>
+                        <option value="physics">Physics</option>
+                        <option value="chemistry">Chemistry</option>
+                        <option value="biology">Biology</option>
+                    </select>
+                </div>
+                <div class="form-input">
+                    <label for="message">Your Message</label>
+                    <textarea name="message" id="message" rows="6"></textarea>
+                </div>
+
+                <div class="text-right">
+                    <button class="btn btn-black border-radius-lg btn-submit">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>
