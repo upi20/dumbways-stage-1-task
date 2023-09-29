@@ -227,7 +227,7 @@ function rendeProjects() {
         <div class="m-0 ml-24 box-shadow border-radius project-item">
             <img src="${e.image}" alt="${e.name}" style="width: 100%" />
             <div>
-                <h1>${e.name}</h1>
+                <a href="./project-detail.html" class="project-link">${e.name}</a>
                 <p>${e.startDate} - ${e.endDate}</p>
                 <br />
                 <p>${e.description}</p>

@@ -279,6 +279,34 @@ nav ul li a:hover {
     margin-right: 16px;
 }
 
+.project-link{
+    color: black;
+    font-size: 1.5em;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.project-link:hover{
+    color: #fe4e30;
+}
+
+/* PROJECT DETAIL ====================== */
+.project-detail-hero{
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 40px;
+}
+
+.project-detail-hero h3{
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+
+.project-detail-hero .technologies{
+    display: grid;
+    grid-template-columns: auto auto;
+}
 /* UTILITIES =========================== */
 /* Spacing */
 .m-0 {
