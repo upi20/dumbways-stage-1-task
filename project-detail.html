@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Blogs | Task Day 4</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+        <link rel="stylesheet" href="./assets/css/style.css" />
+    </head>
+
+    <body style="font-family: Poppins">
+        <nav>
+            <div>
+                <ul>
+                    <li>
+                        <img src="./assets/img/logo.png" alt="logo" class="img-logo" />
+                    </li>
+                    <li class="item-collapse">
+                        <a href="./index.html">Home</a>
+                    </li>
+                    <li class="item-collapse">
+                        <a href="./project.html" class="active">My Project</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <a href="contact.html" class="btn btn-black border-radius">Contact</a>
+            </div>
+        </nav>
+
+        <main>
+            <section class="container mt-80">
+                <h1 class="text-center">Create Blog Post</h1>
+                <form action="" class="contact-form" onsubmit="submitData(event)">
+                    <div class="form-input">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" />
+                    </div>
+
+                    <div class="form-input">
+                        <label for="content">Content</label>
+                        <textarea name="content" id="content" rows="6"></textarea>
+                    </div>
+
+                    <div class="form-input">
+                        <label for="image">Upload Image</label>
+                        <input type="file" name="image" id="image" accept="image/*" />
+                    </div>
+
+                    <div class="text-right">
+                        <button class="btn btn-black border-radius-lg btn-submit" type="submit">Submit</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+        <script src="./assets/js/blogs.js"></script>
+    </body>
+</html>

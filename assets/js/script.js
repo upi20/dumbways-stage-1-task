@@ -13,7 +13,6 @@ function getData() {
     else if (subject == "") return alert("Subject is required");
     else if (message == "") return alert("Message is required");
 
-
     // execute to email
     const emailReceiver = email;
     let a = document.createElement("a");

@@ -16,7 +16,7 @@ body {
     background-color: white;
 }
 
-/* button */
+/* button ===========================*/
 .btn {
     padding: 8px 16px;
     text-decoration: none;
@@ -73,7 +73,7 @@ body {
     color: #fe4e30;
 }
 
-/* Navbar */
+/* Navbar ===========================*/
 nav {
     position: sticky;
     top: 0;
@@ -84,12 +84,16 @@ nav {
     display: flex;
     align-items: center;
     height: 8vh;
+    justify-content: space-between;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 nav ul {
     display: flex;
     list-style-type: none;
     align-items: center;
+    padding: 0;
 }
 
 nav ul li {
@@ -111,78 +115,12 @@ nav ul li a:hover {
     color: #fe4e30;
 }
 
-.nav-left {
-    flex: 50%;
-}
-
-.nav-right {
-    flex: 50%;
-    text-align: end;
-    margin-right: 25px;
-}
-
 .img-logo {
     max-width: 40px;
 }
 
-/* Spacing */
-.m-0 {
-    margin: 0;
-}
 
-.p-0 {
-    margin: 0;
-}
-
-.mt-80 {
-    margin-top: 80px;
-}
-
-.ml-16 {
-    margin-left: 16px;
-}
-
-.ml-24 {
-    margin-left: 24px;
-}
-
-.w-100 {
-    width: 100%;
-}
-
-.w-100 {
-    padding-bottom: 12px;
-}
-
-
-/* Display */
-.d-flex {
-    display: flex;
-}
-
-.d-block {
-    display: block;
-}
-
-.d-inline {
-    display: inline;
-}
-
-/* Text alginment */
-.text-justify {
-    text-align: justify;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.text-right {
-    text-align: right;
-}
-
-
-/* responsive */
+/* responsive ===========================*/
 /* xs */
 @media screen and (max-width: 576px) {
     .container {
@@ -218,7 +156,7 @@ nav ul li a:hover {
     }
 }
 
-/* Custom */
+/* Custom ===========================*/
 .profile-picture>img {
     width: 100%;
     border-radius: 8px 8px 0 0;
@@ -258,6 +196,7 @@ nav ul li a:hover {
     margin: auto;
     display: flex;
     flex-direction: column;
+    font-size: 1.1en;
 }
 
 .form-input {
@@ -275,6 +214,7 @@ nav ul li a:hover {
     border-radius: .3em;
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
     font-size: 1.2em;
+    background-color: white;
 }
 
 .form-input textarea {
@@ -290,4 +230,138 @@ nav ul li a:hover {
     padding-left: 24px;
     padding-right: 24px;
     font-weight: bold;
+}
+
+/* CSS GRID =========================== */
+#projects-list{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    padding-top: 60px;
+    row-gap: 30px;
+    column-gap: 15px;
+}
+
+.project-item{
+    border-radius: 12px;
+    padding: 12px;
+    background-color: white;
+}
+
+.project-item:hover{
+    background-color:#f0f0f0;
+}
+
+.project-item > img{
+    border-radius: 6px;
+}
+
+.project-item h1{
+    margin: 0;
+}
+
+.project-item p{
+    margin: 0;
+}
+
+.project-item .project-btn{
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 20px;
+}
+
+.project-item .technologies{
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.project-item .technologies i{
+    font-size: 1.5em;
+    margin-right: 16px;
+}
+
+/* UTILITIES =========================== */
+/* Spacing */
+.m-0 {
+    margin: 0;
+}
+
+.p-0 {
+    margin: 0;
+}
+
+.mt-80 {
+    margin-top: 80px;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.ml-16 {
+    margin-left: 16px;
+}
+
+.ml-24 {
+    margin-left: 24px;
+}
+
+.mr-8{
+    margin-right: 8px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-100 {
+    padding-bottom: 12px;
+}
+
+
+.pl-8{
+    padding-left: 8px;   
+}
+
+
+
+.w-50{
+    width: 50%;
+}
+
+.w-48{
+    width: 48%;
+}
+
+/* Display */
+.d-flex {
+    display: flex;
+}
+
+.d-block {
+    display: block;
+}
+
+.d-inline {
+    display: inline;
+}
+
+.d-grid {
+    display: grid;
+}
+
+.justify-content-between{
+    justify-content: space-between;
+}
+
+/* Text alginment */
+.text-justify {
+    text-align: justify;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
 }
