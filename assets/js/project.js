@@ -52,7 +52,7 @@ const projects = [
                 icon: `<i class="fa-solid fa-code"></i>`,
             },
         ],
-        startDate: "2023-01-01",
+        startDate: "2023-01-10",
         endDate: "2023-05-01",
         description: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Magnam repellendus magni beatae! Aspernatur nisi facilis illum 
@@ -228,7 +228,7 @@ function rendeProjects() {
             <img src="${e.image}" alt="${e.name}" style="width: 100%" />
             <div>
                 <a href="./project-detail.html" class="project-link">${e.name}</a>
-                <p>${e.startDate} - ${e.endDate}</p>
+                <p>${durationCalculate(e.startDate, e.endDate)}</p>
                 <br />
                 <p>${e.description}</p>
             </div>
@@ -265,6 +265,29 @@ function getValueTechnologies() {
     let results = [];
     technologies.forEach((e) => {
         if (document.getElementById(`technologies-${e.id}`).checked) results.push(e);
+    });
+    return results;
+}
+
+// duration
+function durationCalculate(startDate, endDate) {
+    let diff = ((new Date(endDate)).getTime() - (new Date(startDate)).getTime()) / 1000; // - 1000 to second
+    if (diff < 0) return "Date not valid";
+    let results = "";
+    const times = [
+        { max: 31104000, name: 'Year' },
+        { max: 2592000, name: 'Month' },
+        { max: 604800, name: 'Week' },
+        { max: 86400, name: 'Day' },
+        { max: 3600, name: 'Hour' },
+        { max: 60, name: 'Minute' },
+        { max: 1, name: 'Second' },
+    ];
+    times.forEach(time => {
+        if (diff >= time.max) {
+            results += `${Math.floor(diff / time.max)} ${time.name} `;
+            diff %= time.max;
+        }
     });
     return results;
 }
