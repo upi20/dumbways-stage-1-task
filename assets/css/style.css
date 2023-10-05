@@ -492,7 +492,9 @@ header {
 
     .card-hero {
         display: block;
+        margin-top: 0;
     }
+
     .profile-picture {
         max-width: 300px;
         margin: auto;
@@ -504,6 +506,18 @@ header {
 
     .project-item {
         grid-column-end: span 12;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    .date-input .form-input {
+        width: 100%;
+    }
+
+    .date-input .form-input input {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
