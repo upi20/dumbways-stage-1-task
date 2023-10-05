@@ -3,34 +3,52 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Home | Task Day 4</title>
+        <title>Home | Task Day 6</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
         <link rel="stylesheet" href="./assets/css/style.css" />
     </head>
 
     <body>
-        <nav>
-            <div>
+        <header>
+            <nav id="nav-desktop">
+                <div>
+                    <ul>
+                        <li>
+                            <a href="./index.html">
+                                <img src="./assets/img/logo.png" alt="logo" class="img-logo" />
+                            </a>
+                        </li>
+                        <li class="item-collapse menu-collapse">
+                            <a href="./index.html" class="active">Home</a>
+                        </li>
+                        <li class="item-collapse menu-collapse">
+                            <a href="./project.html">My Project</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="contact.html" class="btn btn-black border-radius menu-collapse">Contact</a>
+                <button type="button" class="btn btn-hamburger" title="Expand Menu" onclick="expandMenu(this)">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <nav id="nav-mobile" class="d-none">
                 <ul>
-                    <li>
-                        <img src="./assets/img/logo.png" alt="logo" class="img-logo" />
-                    </li>
                     <li class="item-collapse">
                         <a href="./index.html" class="active">Home</a>
                     </li>
                     <li class="item-collapse">
                         <a href="./project.html">My Project</a>
                     </li>
+                    <li class="item-collapse">
+                        <a href="contact.html" class="btn btn-black border-radius">Contact Me</a>
+                    </li>
                 </ul>
-            </div>
-            <div>
-                <a href="contact.html" class="btn btn-black border-radius">Contact</a>
-            </div>
-        </nav>
+            </nav>
+        </header>
 
         <main>
             <section class="container">
-                <div class="card border-radius mt-80 d-flex">
+                <div class="card-hero border-radius">
                     <div>
                         <h1>Hi Welcome to my hut</h1>
                         <p class="w-100 text-justify">
@@ -91,5 +109,6 @@
                 </div>
             </section>
         </main>
+        <script src="./assets/js/button.js"></script>
     </body>
 </html>
