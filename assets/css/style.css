@@ -435,6 +435,15 @@ header {
 
 /* md */
 @media only screen and (min-width: 768px) {
+    .date-input {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .date-input .form-input {
+        width: 48%;
+    }
+
     .container {
         width: 720px;
     }
@@ -469,6 +478,10 @@ header {
 
 /* md */
 @media only screen and (max-width: 767px) {
+    .contact-form {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
     .menu-collapse {
         display: none !important;
     }
