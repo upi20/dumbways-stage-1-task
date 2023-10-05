@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>My Project | Task Day 4</title>
+        <title>My Project | Task Day 6</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
         <link rel="stylesheet" href="./assets/css/style.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
 
-    <body style="font-family: Poppins">
-        <nav>
-            <div>
+    <body>
+        <header>
+            <nav id="nav-desktop">
+                <div>
+                    <ul>
+                        <li>
+                            <img src="./assets/img/logo.png" alt="logo" class="img-logo" />
+                        </li>
+                        <li class="item-collapse menu-collapse">
+                            <a href="./index.html">Home</a>
+                        </li>
+                        <li class="item-collapse menu-collapse">
+                            <a href="./project.html" class="active">My Project</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="contact.html" class="btn btn-black border-radius menu-collapse">Contact</a>
+                <button type="button" class="btn btn-hamburger" title="Expand Menu" onclick="expandMenu(this)">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <nav id="nav-mobile" class="d-none">
                 <ul>
-                    <li>
-                        <img src="./assets/img/logo.png" alt="logo" class="img-logo" />
-                    </li>
                     <li class="item-collapse">
                         <a href="./index.html">Home</a>
                     </li>
                     <li class="item-collapse">
                         <a href="./project.html" class="active">My Project</a>
                     </li>
+                    <li class="item-collapse">
+                        <a href="contact.html" class="btn btn-black border-radius">Contact Me</a>
+                    </li>
                 </ul>
-            </div>
-            <div>
-                <a href="contact.html" class="btn btn-black border-radius">Contact</a>
-            </div>
-        </nav>
+            </nav>
+        </header>
 
         <main>
             <!-- form -->
@@ -99,5 +116,6 @@
             </section>
         </main>
         <script src="./assets/js/project.js"></script>
+        <script src="./assets/js/button.js"></script>
     </body>
 </html>
