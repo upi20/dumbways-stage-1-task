@@ -224,7 +224,7 @@ function rendeProjects() {
 
     projects.forEach((e) => {
         htmlBuilder += `
-        <div class="m-0 ml-24 box-shadow border-radius project-item">
+        <div class="m-0 box-shadow border-radius project-item">
             <img src="${e.image}" alt="${e.name}" style="width: 100%" />
             <div>
                 <a href="./project-detail.html" class="project-link">${e.name}</a>

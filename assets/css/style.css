@@ -91,16 +91,17 @@ header {
     top: 0;
     left: 0;
     right: 0;
+    z-index: 9999;
 }
 
 #nav-desktop {
-    z-index: 9999;
     background-color: #f4f3f3;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-left: 40px;
     padding-right: 40px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
 #nav-desktop ul {
@@ -130,7 +131,6 @@ header {
 }
 
 #nav-mobile {
-    z-index: 9999;
     background-color: #d3d3d3;
     display: flex;
     align-items: center;
@@ -251,17 +251,19 @@ header {
 
 /* CSS GRID =========================== */
 #projects-list {
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
     padding-top: 60px;
-    row-gap: 30px;
-    column-gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(auto, 60px));
+    grid-gap: 30px;
 }
 
 .project-item {
     border-radius: 12px;
     padding: 12px;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
 }
 
 .project-item:hover {
@@ -423,7 +425,7 @@ header {
 /* sm */
 @media only screen and (min-width: 458px) {
     .container {
-        width: 540px;
+        width: 100%;
     }
 
     .btn-hamburger {
@@ -436,12 +438,20 @@ header {
     .container {
         width: 720px;
     }
+
+    .project-item {
+        grid-column-end: span 6;
+    }
 }
 
 /* xl */
 @media only screen and (min-width: 992px) {
     .container {
         width: 960px;
+    }
+
+    .project-item {
+        grid-column-end: span 4;
     }
 }
 
@@ -452,9 +462,13 @@ header {
     }
 }
 
-/* max width */
+/* max width ==============================*/
 /* sm */
 @media only screen and (max-width: 457px) {
+}
+
+/* md */
+@media only screen and (max-width: 767px) {
     .menu-collapse {
         display: none !important;
     }
@@ -462,10 +476,7 @@ header {
     .btn-hamburger {
         display: block;
     }
-}
 
-/* md */
-@media only screen and (max-width: 767px) {
     .card-hero {
         display: block;
     }
@@ -476,6 +487,10 @@ header {
 
     .contact-list {
         text-align: center;
+    }
+
+    .project-item {
+        grid-column-end: span 12;
     }
 }
 
