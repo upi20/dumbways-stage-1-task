@@ -85,6 +85,14 @@ body {
     color: #fe4e30;
 }
 
+.text-gold {
+    color: #ffd700;
+}
+
+.text-light {
+    color: #808080;
+}
+
 /* Navbar ===========================*/
 header {
     position: sticky;
@@ -412,6 +420,15 @@ header {
 
 .text-right {
     text-align: right;
+}
+
+/* font style */
+.fs-italic {
+    font-style: italic;
+}
+
+.fw-bold {
+    font-weight: bold;
 }
 
 /* responsive ===========================*/

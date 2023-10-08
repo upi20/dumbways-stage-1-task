@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My Project | Task Day 6</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+        <link rel="stylesheet" href="./assets/css/style.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+
+    <body>
+        <header>
+            <nav id="nav-desktop">
+                <div>
+                    <ul>
+                        <li>
+                            <a href="./index.html">
+                                <img src="./assets/img/logo.png" alt="logo" class="img-logo" />
+                            </a>
+                        </li>
+                        <li class="item-collapse menu-collapse">
+                            <a href="./index.html">Home</a>
+                        </li>
+                        <li class="item-collapse menu-collapse">
+                            <a href="./project.html">My Project</a>
+                        </li>
+                        <li class="item-collapse menu-collapse">
+                            <a href="./testimonials.html" class="active">Testimonials</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="contact.html" class="btn btn-black border-radius menu-collapse">Contact</a>
+                <button type="button" class="btn btn-hamburger" title="Expand Menu" onclick="expandMenu(this)">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            <nav id="nav-mobile" class="d-none">
+                <ul>
+                    <li class="item-collapse">
+                        <a href="./index.html">Home</a>
+                    </li>
+                    <li class="item-collapse">
+                        <a href="./project.html">My Project</a>
+                    </li>
+                    <li class="item-collapse">
+                        <a href="./testimonials.html" class="active">Testimonials</a>
+                    </li>
+                    <li class="item-collapse">
+                        <a href="contact.html" class="btn btn-black border-radius">Contact Me</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="container mt-80">
+                <h1 class="text-center">My Testimonials</h1>
+                <div id="projects-list"></div>
+            </section>
+            <br />
+        </main>
+        <script src="./assets/js/testimonials.js"></script>
+        <script src="./assets/js/button.js"></script>
+    </body>
+</html>
