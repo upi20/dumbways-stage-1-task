@@ -25,8 +25,23 @@ const dataTestiomonials = [
     },
 ];
 
-function renderTestimonial() {
+function renderTestimonial(element = null) {
     let htmlBuilder = "";
+    let dataFilter = dataTestiomonials;
+
+    // if data filter
+    if (element != null) {
+        const rating = element.dataset.rating;
+        if (rating != "") dataFilter = dataTestiomonials.filter((e) => e.rating == rating);
+
+        // remove all active
+        const collection = document.getElementsByClassName("rating-btn");
+        for (const ele of collection) ele.classList.remove("active");
+
+        // add active to btn click
+        element.classList.add("active");
+    }
+
     const container = document.getElementById("projects-list");
     const ratingGenerator = (rating = 5) => {
         let counter = 1;
@@ -45,7 +60,7 @@ function renderTestimonial() {
 
         return results;
     };
-    dataTestiomonials.forEach((e) => {
+    dataFilter.forEach((e) => {
         htmlBuilder += `<div class="m-0 box-shadow border-radius project-item">
             <img src="${e.image}" alt="${e.name}" style="width: 100%" />
             <div>
