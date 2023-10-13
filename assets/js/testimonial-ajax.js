@@ -23,7 +23,7 @@ const ratingGenerator = (rating = 5) => {
     let results = "";
     // gold star
     while (counter <= rating && counter <= 5) {
-        results += '<i class="fas fa-star text-gold"></i>';
+        results += '<i class="fas fa-star text-warning"></i>';
         counter++;
     }
 
@@ -47,28 +47,35 @@ async function renderTestimonial(element = null) {
             if (rating != "") dataFilter = response.filter((e) => e.rating == rating);
 
             // remove all active
-            const collection = document.getElementsByClassName("rating-btn");
-            for (const ele of collection) ele.classList.remove("active");
-
-            // add active to btn click
-            element.classList.add("active");
+            const collection = document.getElementById("btn-ratings").children;
+            for (const ele of collection) {
+                if (ele != element) {
+                    ele.classList.remove("btn-primary");
+                    ele.classList.add("btn-secondary");
+                } else {
+                    ele.classList.add("btn-primary");
+                    ele.classList.remove("btn-secondary");
+                }
+            }
         }
 
         let htmlBuilder = "";
         if (dataFilter.length == 0) {
-            htmlBuilder = `<h3>Data not found !</h3>`;
+            htmlBuilder = `<h3 class="text-center">Data not found !</h3>`;
         } else {
             dataFilter.forEach((e) => {
-                htmlBuilder += `<div class="m-0 box-shadow border-radius project-item">
-                <img src="${e.image}" alt="${e.name}" style="width: 100%" />
-                <div>
-                    <br />
-                    ${ratingGenerator(e.rating)}
-                    <p class="fs-italic">"${e.comment}"</p>
-                </div>
-                <br />
-                <p class="fw-bold text-right">-${e.name}</p>
-            </div>`;
+                htmlBuilder += `
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="card border-0 shadow-sm mb-4 card-hover">
+                            <div class="card-body">
+                                <img src="${e.image}" alt="${e.name}" class="w-100 rounded" />
+                                <div class="mt-2"> ${ratingGenerator(e.rating)} </div>
+                                <p class="fst-italic mt-2">${e.comment}</p>
+                                <p class="fw-bold text-end">-${e.name}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
             });
         }
         document.getElementById("projects-list").innerHTML = htmlBuilder;
