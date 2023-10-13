@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Home | Task Day 6</title>
+        <title>Home | Task Day 10</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="/assets/css/main.css" />
     </head>
 
-    <body data-bs-theme="" class="bg-body-tertiary">
+    <body data-bs-theme="dark" class="bg-body-tertiary">
         <nav class="navbar sticky-top navbar-expand-lg bg-light-subtle shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="/">
@@ -131,36 +131,40 @@
         </main>
         <footer class="container">
             <nav
-                class="fixed-bottom fw-100 bg-light-subtle d-flex flex-row justify-content-between shadow-lg d-lg-none justify-content-md-around"
+                class="fixed-bottom fw-100 bg-light-subtle d-flex flex-row justify-content-between shadow-lg d-lg-none justify-content-sm-around"
             >
                 <div class="d-flex flex-column text-center">
-                    <a href="/" class="fs-3 m-2 text-primary mb-0" aria-label="Home">
+                    <a href="/" class="fs-3 text-primary m-2 mb-sm-0" aria-label="Home">
                         <i class="fa-solid fa-house"></i>
                     </a>
-                    <span>Home</span>
+                    <span class="d-none d-sm-inline">Home</span>
                 </div>
                 <div class="d-flex flex-column text-center">
-                    <a href="/project.html" class="fs-3 m-2 text-body-emphasis mb-0" aria-label="My Project">
+                    <a href="/project.html" class="fs-3 m-2 text-body-emphasis mb-sm-0" aria-label="My Project">
                         <i class="fa-solid fa-list-check"></i>
                     </a>
-                    <span>My Project</span>
+                    <span class="d-none d-sm-inline">My Project</span>
                 </div>
                 <div class="d-flex flex-column text-center">
-                    <a href="/testimonials.html" class="fs-3 m-2 text-body-emphasis mb-0" aria-label="Testimonials">
+                    <a href="/testimonials.html" class="fs-3 m-2 text-body-emphasis mb-sm-0" aria-label="Testimonials">
                         <i class="fa-solid fa-user-pen"></i>
                     </a>
-                    <span>Testimonials</span>
+                    <span class="d-none d-sm-inline">Testimonials</span>
                 </div>
                 <div class="d-flex flex-column text-center">
-                    <a href="/contact.html" class="fs-3 m-2 text-body-emphasis mb-0" aria-label="Contact Me">
+                    <a href="/contact.html" class="fs-3 m-2 text-body-emphasis mb-sm-0" aria-label="Contact Me">
                         <i class="fa-brands fa-whatsapp"></i>
                     </a>
-                    <span>Contact Me</span>
+                    <span class="d-none d-sm-inline">Contact Me</span>
                 </div>
                 <div class="d-flex flex-column text-center">
-                    <a href="javascript:void(0)" class="fs-3 m-2 mb-0 text-body-emphasis switch-mode" aria-label="Mode">
+                    <a
+                        href="javascript:void(0)"
+                        class="fs-3 m-2 mb-sm-0 text-body-emphasis switch-mode"
+                        aria-label="Mode"
+                    >
                     </a>
-                    <span>Mode</span>
+                    <span class="d-none d-sm-inline">Mode</span>
                 </div>
             </nav>
         </footer>

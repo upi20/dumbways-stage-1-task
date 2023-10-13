@@ -218,26 +218,35 @@ function rendeProjects() {
     const container = document.getElementById("projects-list");
     const technologiesBuilder = (technologies) => {
         return technologies.reduce((a, b) => {
-            return a + b.icon;
+            return a + `<span class="fs-2 me-3">${b.icon}</span>`;
         }, "");
     };
 
     projects.forEach((e) => {
         htmlBuilder += `
-        <div class="m-0 box-shadow border-radius project-item">
-            <img src="${e.image}" alt="${e.name}" style="width: 100%" />
-            <div>
-                <a href="./project-detail.html" class="project-link">${e.name}</a>
-                <p>${durationCalculate(e.startDate, e.endDate)}</p>
-                <br />
-                <p>${e.description}</p>
-            </div>
-            <div class="technologies">
-                ${technologiesBuilder(e.technologies)}
-            </div>
-            <div class="project-btn">
-                <a href="#" class="btn btn-black border-radius text-center">Edit</a>
-                <a href="#" class="btn btn-black border-radius text-center">Delete</a>
+        <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="card border-0 shadow-sm mb-4 card-hover">
+                <div class="card-body">
+                    <img src="${e.image}" alt="${e.name}" class="w-100 rounded" />
+                    <div class="mt-2">
+                        <a class="h5 fw-bold text-decoration-none" href="/project-detail.html" class="project-link">
+                        ${e.name}
+                        </a>
+                        <p>${durationCalculate(e.startDate, e.endDate)}</p>
+                        <p>${e.description}</p>
+                    </div>
+                    <div class="py-2">
+                        ${technologiesBuilder(e.technologies)}
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <a href="#" class="btn btn-primary rounded w-100">Edit</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="#" class="btn btn-danger rounded w-100">Delete</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         `;
@@ -252,9 +261,9 @@ function renderTechnologies() {
     let htmlBuilder = "";
     technologies.forEach((e) => {
         htmlBuilder += `
-            <div class="d-inline mr-8">
-                <input type="checkbox" id="technologies-${e.id}" name="technologies[${e.id}]"/>
-                <label for="technologies-${e.id}">${e.name}</label>
+            <div class="d-inline me-3 text-nowrap">
+                <input type="checkbox" id="technologies-${e.id}" name="technologies[${e.id}]"/ class="form-check-input">
+                <label for="technologies-${e.id}" class="form-check-label">${e.name}</label>
             </div>
         `;
     });
