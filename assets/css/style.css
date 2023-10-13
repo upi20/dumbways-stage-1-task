@@ -33,7 +33,9 @@ body {
 }
 
 .btn-black:hover,
-.btn-black.active {
+.btn-black.active,
+.rating-btn:hover,
+.rating-btn.active {
     background-color: #fe4e30;
 }
 
@@ -91,6 +93,28 @@ body {
 
 .text-light {
     color: #808080;
+}
+
+.rating {
+    margin: auto;
+    padding: auto;
+}
+
+.rating-btn {
+    padding: 8px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+}
+
+.container-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Navbar ===========================*/

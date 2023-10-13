@@ -54,6 +54,27 @@
         <main>
             <section class="container mt-80">
                 <h1 class="text-center">My Testimonials</h1>
+                <div class="container-rating">
+                    <h2>Rating By Star</h2>
+                    <div class="rating">
+                        <button class="rating-btn active" data-rating="" onclick="renderTestimonial(this)">All</button>
+                        <button class="rating-btn" data-rating="1" onclick="renderTestimonial(this)">
+                            1 <i class="fa-solid fa-star"></i>
+                        </button>
+                        <button class="rating-btn" data-rating="2" onclick="renderTestimonial(this)">
+                            2 <i class="fa-solid fa-star"></i>
+                        </button>
+                        <button class="rating-btn" data-rating="3" onclick="renderTestimonial(this)">
+                            3 <i class="fa-solid fa-star"></i>
+                        </button>
+                        <button class="rating-btn" data-rating="4" onclick="renderTestimonial(this)">
+                            4 <i class="fa-solid fa-star"></i>
+                        </button>
+                        <button class="rating-btn" data-rating="5" onclick="renderTestimonial(this)">
+                            5 <i class="fa-solid fa-star"></i>
+                        </button>
+                    </div>
+                </div>
                 <div id="projects-list"></div>
             </section>
             <br />
