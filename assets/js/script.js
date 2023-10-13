@@ -1,4 +1,6 @@
-function getData() {
+function getData(event) {
+    event.preventDefault();
+
     // data collection
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
