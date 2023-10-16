@@ -158,7 +158,14 @@
                             id="preview-image"
                         />
                         <div class="input-group mb-3">
-                            <input type="file" class="form-control" id="image" name="image" onchange="changeImage()" />
+                            <input
+                                type="file"
+                                class="form-control"
+                                id="image"
+                                name="image"
+                                onchange="changeImage()"
+                                accept="image/png,image/jpg,image/jpeg"
+                            />
                             <label class="input-group-text" for="image">Upload Image</label>
                         </div>
                         <div class="d-gid">{{{technologiesHtml}}}</div>
