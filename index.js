@@ -13,6 +13,8 @@ const editProject = require("./src/controller/project/edit");
 const updateProject = require("./src/controller/project/update");
 const deleteProject = require("./src/controller/project/delete");
 
+const { Technology } = require("./src/database/models");
+
 // setup server
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -43,6 +45,12 @@ app.get("/project/:id/delete", deleteProject);
 app.get("/project/:id/edit", editProject);
 app.post("/project/:id/edit", updateProject);
 
+app.get("/tes", async function (req, res) {
+  const get = await Technology.findAll();
+  console.log(get);
+  res.send(200);
+});
+
 // // example render template html without template engine
 // app.get("/testes", (req, res) => {
 //     const filePath = path.resolve(__dirname, "src/views/testimonial.html");
@@ -51,5 +59,5 @@ app.post("/project/:id/edit", updateProject);
 
 // local server
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT} http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
