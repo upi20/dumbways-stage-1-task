@@ -6,14 +6,21 @@ const fileUpload = require("express-fileupload");
 const home = require("./src/controller/home");
 const testimonial = require("./src/controller/testimonial");
 const contact = require("./src/controller/contact");
-const addProject = require("./src/controller/project/add");
-const storeProject = require("./src/controller/project/store");
-const viewProject = require("./src/controller/project/view");
-const editProject = require("./src/controller/project/edit");
-const updateProject = require("./src/controller/project/update");
-const deleteProject = require("./src/controller/project/delete");
 
-const { Technology, Project, ProjectTechnology } = require("./src/database/models");
+// project controller
+const {
+  add: addProject,
+  store: storeProject,
+  view: viewProject,
+  delete: deleteProject,
+  edit: editProject,
+  update: updateProject,
+} = require("./src/controller/project");
+
+// auth and session
+const bcrypt = require("bcrypt");
+const flash = require("express-flash");
+const session = require("express-session");
 
 // setup server
 const app = express();
@@ -32,6 +39,18 @@ app.use(express.static("src/assets"));
 // parsing data from client
 app.use(express.urlencoded({ extended: false }));
 
+// setup session
+app.use(
+  session({
+    cookie: { secure: true, httpOnly: true, maxAge: 1000 * 60 * 60 * 2 },
+    store: new session.MemoryStore(),
+    saveUninitialized: true,
+    resave: false,
+    secret: "100319",
+  })
+);
+app.use(flash());
+
 // routing
 app.get("/", home);
 app.get("/testimonial", testimonial);
@@ -46,22 +65,18 @@ app.get("/project/:id/edit", editProject);
 app.post("/project/:id/edit", updateProject);
 
 app.get("/tes", async function (req, res) {
-  const result = await Project.findAll({
-    // attributes: ["id", "name"],
-    include: {
-      model: ProjectTechnology,
-      include: {
-        model: Technology,
-      },
-    },
-  });
-  return res.status(200).json({
-    message: "success",
-    data: result,
+  const pass = "12345678";
+  // encryption
+  await bcrypt.hash(pass, 10, function (err, hash) {
+    // check
+    const check = bcrypt.compareSync(pass, hash);
+    console.log(check);
+    console.log(hash);
+
+    // set cookie
   });
 
-  console.log(get);
-  res.send(200);
+  return res.send(200);
 });
 
 // // example render template html without template engine
