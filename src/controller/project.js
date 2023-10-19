@@ -223,14 +223,13 @@ module.exports = {
     return res.redirect(`/project/${id}/edit?alert=1&alertmessage=Data Successfully Edited`);
   },
 
-  delete: (req, res) => {
-    // desctructur data
+  delete: async (req, res) => {
     const { id } = req.params;
-    let projects = getProjectsData();
-
-    // find data
-    let project = projects.find((e) => e.id == id);
-    // if project not found
+    // get by id
+    const project = await Project.findOne({
+      where: { id },
+      include: { model: ProjectTechnology },
+    });
     if (!project) return res.send(404);
 
     // delete image
@@ -241,9 +240,8 @@ module.exports = {
     } catch (error) {
       console.log(error);
     }
-    projects = projects.filter((e) => e.id != id);
-    saveProjectsData(projects);
 
+    await Project.destroy({ where: { id } });
     res.redirect(`/?alert=1&alertmessage=Data Successfully Deleted`);
   },
 };

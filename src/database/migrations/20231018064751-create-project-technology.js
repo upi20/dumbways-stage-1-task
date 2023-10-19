@@ -11,19 +11,21 @@ module.exports = {
       },
       projectId: {
         type: Sequelize.DataTypes.INTEGER,
-        references: {
-          model: {
-            tableName: "projects",
-            key: "id",
-          },
-        },
+        // references: {
+        //   model: {
+        //     tableName: "projects",
+        //     key: "id",
+        //   },
+        // },
       },
       technologyId: {
         type: Sequelize.DataTypes.INTEGER,
-        model: {
-          tableName: "technologies",
-          key: "id",
-        },
+        // references: {
+        //   model: {
+        //     tableName: "technologies",
+        //     key: "id",
+        //   },
+        // },
       },
       createdAt: {
         allowNull: false,
