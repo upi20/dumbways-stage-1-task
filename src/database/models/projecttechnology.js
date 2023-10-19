@@ -20,8 +20,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   ProjectTechnology.init(
     {
-      projectId: DataTypes.STRING,
-      technologyId: DataTypes.STRING,
+      projectId: DataTypes.INTEGER,
+      technologyId: DataTypes.INTEGER,
     },
     {
       sequelize,

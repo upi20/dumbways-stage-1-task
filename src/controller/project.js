@@ -10,12 +10,6 @@ const formatDate = (date = "") => {
   return [date.getDate(), months[date.getMonth()], date.getFullYear()].join(" ");
 };
 
-const formatDateInput = (date = "") => {
-  const addZero = (n) => (n < 10 ? `0${n}` : n);
-  date = new Date(date);
-  return [date.getFullYear(), addZero(date.getMonth() + 1), addZero(date.getDate())].join("-");
-};
-
 module.exports = {
   view: async (req, res) => {
     const { id } = req.params;
@@ -36,6 +30,9 @@ module.exports = {
   },
 
   add: async (req, res) => {
+    // check autentication
+    if (!req.session.isLogin) return res.redirect("/login");
+
     const { alert, alertmessage } = req.query;
     const [alertSuccess, alertDanger, alertWarning] = [alert == 1, alert == 2, alert == 3];
     const technologies = await Technology.findAll({ order: [["name", "ASC"]] });
@@ -69,10 +66,6 @@ module.exports = {
 
     // if project not found
     if (!project) return res.send(404);
-
-    // fix format date input
-    project.startDateInput = formatDateInput(project.startDate); // 2023-01-01T00:00:00.000Z -> 2023-01-01
-    project.endDateInput = formatDateInput(project.endDate);
 
     // get all technologies
     const technologies = await Technology.findAll({ order: [["name", "DESC"]] });
