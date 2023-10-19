@@ -16,28 +16,24 @@ module.exports = {
       "technologies",
       [
         {
-          id: 1,
           name: "Node Js",
           icon: '<i class="fa-brands fa-node-js"></i>',
           updatedAt: "2023-01-01",
           createdAt: "2023-01-01",
         },
         {
-          id: 2,
           name: "Next Js",
           icon: '<i class="fa-solid fa-n"></i>',
           updatedAt: "2023-01-01",
           createdAt: "2023-01-01",
         },
         {
-          id: 3,
           name: "React Js",
           icon: '<i class="fa-brands fa-react"></i>',
           updatedAt: "2023-01-01",
           createdAt: "2023-01-01",
         },
         {
-          id: 4,
           name: "TypeScript",
           icon: '<i class="fa-solid fa-code"></i>',
           updatedAt: "2023-01-01",

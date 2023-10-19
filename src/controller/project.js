@@ -2,13 +2,20 @@ const fs = require("fs");
 const path = require("path");
 const { getProjectsData, saveProjectsData } = require("../mocks/projects");
 const durationCalculate = require("../helper/duration-calculate");
-const { Technology } = require("../database/models");
+const { Technology, Project, ProjectTechnology } = require("../database/models");
 const technologies = require("../mocks/technologies");
+const sequelize = require("../helper/sequelize");
 
 const formatDate = (date = "") => {
   date = new Date(date);
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   return [date.getDate(), months[date.getMonth()], date.getFullYear()].join(" ");
+};
+
+const formatDateInput = (date = "") => {
+  const addZero = (n) => (n < 10 ? `0${n}` : n);
+  date = new Date(date);
+  return [date.getFullYear(), addZero(date.getMonth() + 1), addZero(date.getDate())].join("-");
 };
 
 const techParse = (techs = []) => {
@@ -56,17 +63,29 @@ module.exports = {
     res.render("project", { technologiesHtml, alertSuccess, alertDanger, alertWarning, alertMessage: alertmessage });
   },
 
-  edit: (req, res) => {
-    let project = getProjectsData().find((e) => e.id == req.params.id);
+  edit: async (req, res) => {
+    const { id } = req.params;
+    // get by id
+    const project = await Project.findOne({
+      where: { id },
+      include: { model: ProjectTechnology },
+    });
 
     // if project not found
     if (!project) return res.send(404);
+
+    // fix format date input
+    project.startDateInput = formatDateInput(project.startDate); // 2023-01-01T00:00:00.000Z -> 2023-01-01
+    project.endDateInput = formatDateInput(project.endDate);
+
+    // get all technologies
+    const technologies = await Technology.findAll({ order: [["name", "DESC"]] });
 
     // if project found
     const { alert, alertmessage } = req.query;
     let technologiesHtml = "";
     technologies.forEach((e) => {
-      const checked = project.technologies.find((t) => t.id == e.id) ? "checked" : "";
+      const checked = project.ProjectTechnologies.find((t) => t.technologyId == e.id) ? "checked" : "";
       technologiesHtml += `
           <div class="d-inline me-3 text-nowrap">
               <input type="checkbox" id="technologies-${e.id}" name="technologies[${e.id}]" data-id="${e.id}" ${checked} class="form-check-input technologies">
@@ -75,9 +94,8 @@ module.exports = {
         `;
     });
 
-    const alertSuccess = alert == 1;
-    const alertDanger = alert == 2;
-    const alertWarning = alert == 3;
+    // render with params
+    const [alertSuccess, alertDanger, alertWarning] = [alert == 1, alert == 2, alert == 3];
     res.render("project", {
       technologiesHtml,
       alertSuccess,
@@ -131,56 +149,68 @@ module.exports = {
     return res.redirect("/project/add?alert=1&alertmessage=Data Successfully Saved");
   },
 
-  update: (req, res) => {
-    // desctructur data
+  update: async (req, res) => {
+    // desctructur data from request data
     const { name, description } = req.body;
     const { id } = req.params;
-    const projects = getProjectsData();
+    const techLists = JSON.parse(req.body.technologies).map((e) => ({ projectId: id, technologyId: e }));
 
-    // find data
-    let project = projects.find((e) => e.id == id);
-
-    // technologies
-    const techLists = techParse(JSON.parse(req.body.technologies));
+    // check techlist
     if (techLists.length < 1) {
       return res.redirect(`/project/${id}/edit?alert=2&alertmessage=Technologies must be selected at least 1`);
     }
 
-    // edit project
-    project.name = name;
-    project.technologies = techLists;
-    project.startDate = req.body["start-date"];
-    project.endDate = req.body["end-date"];
-    project.description = description;
+    // initial transaction
+    const t = await sequelize.transaction();
+    try {
+      // check data exists and permissions
+      const project = await Project.findOne({ where: { id } });
+      // if project not found
+      if (!project) return res.send(404);
 
-    // upload image
-    if (req.files) {
-      let imagePath = "";
-      const oldImage = project.image;
-      const { image } = req.files;
-      const rand = Math.round(Math.random() * 10000);
-      imagePath = `/img/projects/${rand}-${image.name}`;
-      const fullPath = path.join(__dirname, `/../assets/${imagePath}`);
-      image.mv(fullPath);
-      project.image = imagePath;
+      // delete all technologies
+      await ProjectTechnology.destroy({ where: { projectId: id } }, { transaction: t });
 
-      // delete image
-      try {
-        const oldImagePath = path.join(__dirname, `/../assets/${oldImage}`);
-        fs.unlinkSync(oldImagePath);
-        console.log(`Delete File successfully. ${oldImagePath}`);
-      } catch (error) {
-        console.log(error);
+      // insert technologies
+      await ProjectTechnology.bulkCreate(techLists, { transaction: t });
+
+      // upload image
+      let imagePath = req.body["image-default"];
+      if (req.files) {
+        const oldImage = project.image;
+        const { image } = req.files;
+        const rand = Math.round(Math.random() * 10000);
+        imagePath = `/img/projects/${rand}-${image.name}`;
+        const fullPath = path.join(__dirname, `/../assets/${imagePath}`);
+        image.mv(fullPath);
+
+        // delete image
+        try {
+          const oldImagePath = path.join(__dirname, `/../assets/${oldImage}`);
+          fs.unlinkSync(oldImagePath);
+          console.log(`Delete File successfully. ${oldImagePath}`);
+        } catch (error) {
+          console.log(error);
+        }
       }
-      console.log("data updated");
+
+      // update data
+      await project.update({
+        name,
+        description,
+        startDate: req.body["start-date"],
+        endDate: req.body["end-date"],
+        image: imagePath,
+      });
+
+      // finish transaction
+      await t.commit();
+    } catch (error) {
+      await t.rollback();
+      return res.status(500).send(error);
     }
 
-    // insert data
-    const index = projects.findIndex((e) => e.id == id);
-    projects[index] = project;
-    saveProjectsData(projects);
-
-    res.redirect(`/project/${id}/edit?alert=1&alertmessage=Data Successfully Edited`);
+    return res.redirect(`/project/${id}/edit?alert=1&alertmessage=Data Successfully Edited`);
   },
 
   delete: (req, res) => {

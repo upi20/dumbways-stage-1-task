@@ -1,158 +1,154 @@
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{{project.name}} | Task Day 11</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{project.name}} | Personal Web</title>
 
-        <!-- favicon -->
-        <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-        <link rel="manifest" href="/favicon/manifest.json" />
-        <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png" />
-        <meta name="theme-color" content="#FE4E30" />
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+    <link rel="manifest" href="/favicon/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#FE4E30" />
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-            crossorigin="anonymous"
-        />
-        <link rel="stylesheet" href="/css/main.css" />
-    </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
 
-    <body data-bs-theme="dark" class="bg-body-tertiary">
-        <nav class="navbar sticky-top navbar-expand-lg bg-light-subtle shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="/">
-                    <img src="/img/logo.png" alt="Logo" style="max-height: 30px" />
-                </a>
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/project/add">Add Project</a>
-                        </li>
-                        <!-- <li class="nav-item">
+  <body data-bs-theme="dark" class="bg-body-tertiary">
+    <nav class="navbar sticky-top navbar-expand-lg bg-light-subtle shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="/img/logo.png" alt="Logo" style="max-height: 30px" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/project/add">Add Project</a>
+            </li>
+            <!-- <li class="nav-item">
                             <a class="nav-link" href="/testimonial">Testimonials</a>
                         </li> -->
-                    </ul>
-                    <a href="/contact" class="btn btn-success">Contact Me</a>
-                </div>
-                <button class="btn btn-secodnary d-none d-lg-block switch-mode">
-                    <i class="fa-regular fa-sun"></i>
-                </button>
-            </div>
-        </nav>
+          </ul>
+          <a href="/contact" class="btn btn-success">Contact Me</a>
+        </div>
+        <button class="btn btn-secodnary d-none d-lg-block switch-mode">
+          <i class="fa-regular fa-sun"></i>
+        </button>
+      </div>
+    </nav>
 
-        <main>
-            <section class="py-5 container">
-                <h2 class="h4 fw-bold text-center">{{project.name}}</h2>
-                <div class="row mt-5">
-                    <div class="col-md-6 col-lg-6">
-                        <img src="{{project.image}}" class="w-100 rounded" alt="{{project.name}}" />
-                    </div>
-                    <div class="col-md-6 col-lg-6 ps-md-5">
-                        <h3>Duration</h3>
-                        <span class="mt-2 d-block">
-                            <i class="fa-solid fa-calendar-days me-2"></i>
-                            {{project.startDateStr}}
-                            -
-                            {{project.endDateStr}}
-                        </span>
-                        <span class="mt-2 d-block">
-                            <i class="fa-regular fa-clock me-2"></i>
-                            {{project.duration}}
-                        </span>
-                        <br />
-                        <br />
-                        <h3>Technologies</h3>
-                        <div class="row">
-                            {{#each project.technologies}}
-                                <div class="col-md-6">
-                                    <div class="mt-2">
-                                        <span class="me-2">{{{this.icon}}}</span>
-                                        {{this.name}}
-                                    </div>
-                                </div>
-                            {{/each}}
-                        </div>
-                    </div>
+    <main>
+      <section class="py-5 container">
+        <h2 class="h4 fw-bold text-center">{{project.name}}</h2>
+        <div class="row mt-5">
+          <div class="col-md-6 col-lg-6">
+            <img src="{{project.image}}" class="w-100 rounded" alt="{{project.name}}" />
+          </div>
+          <div class="col-md-6 col-lg-6 ps-md-5">
+            <h3>Duration</h3>
+            <span class="mt-2 d-block">
+              <i class="fa-solid fa-calendar-days me-2"></i>
+              {{project.startDateStr}}
+              -
+              {{project.endDateStr}}
+            </span>
+            <span class="mt-2 d-block">
+              <i class="fa-regular fa-clock me-2"></i>
+              {{project.duration}}
+            </span>
+            <br />
+            <br />
+            <h3>Technologies</h3>
+            <div class="row">
+              {{#each project.technologies}}
+                <div class="col-md-6">
+                  <div class="mt-2">
+                    <span class="me-2">{{{this.icon}}}</span>
+                    {{this.name}}
+                  </div>
                 </div>
-                <article class="mt-3">
-                    <p class="text-justify">
-                        {{project.description}}
-                    </p>
-                </article>
-            </section>
-        </main>
-        <footer class="container">
-            <nav class="fixed-bottom fw-100 bg-light-subtle d-flex flex-row shadow-lg d-lg-none justify-content-around">
-                <div class="d-flex flex-column text-center">
-                    <a href="/" class="fs-3 m-2 text-primary mb-sm-0" aria-label="Home">
-                        <i class="fa-solid fa-house"></i>
-                    </a>
-                    <span class="d-none d-sm-inline">Home</span>
-                </div>
-                <div class="d-flex flex-column text-center">
-                    <a href="/project/add" class="fs-3 m-2 text-body-emphasis mb-sm-0" aria-label="Add Project">
-                        <i class="fa-solid fa-plus"></i>
-                    </a>
-                    <span class="d-none d-sm-inline">Add Project</span>
-                </div>
-                <!-- <div class="d-flex flex-column text-center">
+              {{/each}}
+            </div>
+          </div>
+        </div>
+        <article class="mt-3">
+          <p class="text-justify">
+            {{project.description}}
+          </p>
+        </article>
+      </section>
+    </main>
+    <footer class="container">
+      <nav class="fixed-bottom fw-100 bg-light-subtle d-flex flex-row shadow-lg d-lg-none justify-content-around">
+        <div class="d-flex flex-column text-center">
+          <a href="/" class="fs-3 m-2 text-primary mb-sm-0" aria-label="Home">
+            <i class="fa-solid fa-house"></i>
+          </a>
+          <span class="d-none d-sm-inline">Home</span>
+        </div>
+        <div class="d-flex flex-column text-center">
+          <a href="/project/add" class="fs-3 m-2 text-body-emphasis mb-sm-0" aria-label="Add Project">
+            <i class="fa-solid fa-plus"></i>
+          </a>
+          <span class="d-none d-sm-inline">Add Project</span>
+        </div>
+        <!-- <div class="d-flex flex-column text-center">
                     <a href="/testimonials.html" class="fs-3 m-2 text-body-emphasis mb-sm-0" aria-label="Testimonials">
                         <i class="fa-solid fa-user-pen"></i>
                     </a>
                     <span class="d-none d-sm-inline">Testimonials</span>
                 </div> -->
-                <div class="d-flex flex-column text-center">
-                    <a href="/contact" class="fs-3 m-2 text-body-emphasis mb-sm-0" aria-label="Contact Me">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
-                    <span class="d-none d-sm-inline">Contact Me</span>
-                </div>
-                <div class="d-flex flex-column text-center">
-                    <a
-                        href="javascript:void(0)"
-                        class="fs-3 m-2 mb-sm-0 text-body-emphasis switch-mode"
-                        aria-label="Mode"
-                    >
-                    </a>
-                    <span class="d-none d-sm-inline">Mode</span>
-                </div>
-            </nav>
-        </footer>
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-            crossorigin="anonymous"
-        ></script>
-        <script src="/js/dark-mode.js"></script>
-    </body>
+        <div class="d-flex flex-column text-center">
+          <a href="/contact" class="fs-3 m-2 text-body-emphasis mb-sm-0" aria-label="Contact Me">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+          <span class="d-none d-sm-inline">Contact Me</span>
+        </div>
+        <div class="d-flex flex-column text-center">
+          <a href="javascript:void(0)" class="fs-3 m-2 mb-sm-0 text-body-emphasis switch-mode" aria-label="Mode">
+          </a>
+          <span class="d-none d-sm-inline">Mode</span>
+        </div>
+      </nav>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/dark-mode.js"></script>
+  </body>
 </html>

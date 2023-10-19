@@ -17,7 +17,6 @@ module.exports = {
       "projects",
       [
         {
-          id: 1,
           name: "Dumbsway Mobile App - 2021",
           image: "/img/projects/1.png",
           startDate: "2023-01-01",
@@ -28,7 +27,6 @@ module.exports = {
           createdAt: "2023-01-01",
         },
         {
-          id: 2,
           name: "Dumbsway Mobile App - 2023",
           image: "/img/projects/2.png",
           startDate: "2023-01-10",
@@ -39,7 +37,6 @@ module.exports = {
           createdAt: "2023-01-01",
         },
         {
-          id: 3,
           name: "Dumbsway Mobile App - 2021",
           image: "/img/projects/3.png",
           startDate: "2023-01-01",
@@ -50,7 +47,6 @@ module.exports = {
           createdAt: "2023-01-01",
         },
         {
-          id: 4,
           name: "Dumbsway Mobile App - 2021",
           image: "/img/projects/4.png",
           startDate: "2023-01-01",
@@ -61,7 +57,6 @@ module.exports = {
           createdAt: "2023-01-01",
         },
         {
-          id: 5,
           name: "Dumbsway Mobile App - 2021",
           image: "/img/projects/5.png",
           startDate: "2023-01-01",
