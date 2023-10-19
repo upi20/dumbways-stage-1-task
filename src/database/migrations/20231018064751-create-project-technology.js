@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       projectId: {
-        type: Sequelize.DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         // references: {
         //   model: {
         //     tableName: "projects",
@@ -19,7 +19,7 @@ module.exports = {
         // },
       },
       technologyId: {
-        type: Sequelize.DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         // references: {
         //   model: {
         //     tableName: "technologies",

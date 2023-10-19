@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Project.init(
     {
+      userId: DataTypes.INTEGER,
       name: DataTypes.STRING,
       image: DataTypes.STRING,
       startDate: DataTypes.DATEONLY,
