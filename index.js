@@ -13,7 +13,7 @@ const editProject = require("./src/controller/project/edit");
 const updateProject = require("./src/controller/project/update");
 const deleteProject = require("./src/controller/project/delete");
 
-const { Technology } = require("./src/database/models");
+const { Technology, Project, ProjectTechnology } = require("./src/database/models");
 
 // setup server
 const app = express();
@@ -46,7 +46,20 @@ app.get("/project/:id/edit", editProject);
 app.post("/project/:id/edit", updateProject);
 
 app.get("/tes", async function (req, res) {
-  const get = await Technology.findAll();
+  const result = await Project.findAll({
+    // attributes: ["id", "name"],
+    include: {
+      model: ProjectTechnology,
+      include: {
+        model: Technology,
+      },
+    },
+  });
+  return res.status(200).json({
+    message: "success",
+    data: result,
+  });
+
   console.log(get);
   res.send(200);
 });

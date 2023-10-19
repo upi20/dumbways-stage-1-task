@@ -57,3 +57,5 @@ module.exports = {
      */
   },
 };
+
+// npx sequelize-cli model:generate --name ProjectTechnology --attributes projectId:string,technologyId:string
