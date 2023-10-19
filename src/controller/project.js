@@ -27,8 +27,13 @@ const techParse = (techs = []) => {
 };
 
 module.exports = {
-  view: (req, res) => {
-    let project = getProjectsData().find((e) => e.id == req.params.id);
+  view: async (req, res) => {
+    const { id } = req.params;
+    // get by id
+    const project = await Project.findOne({
+      where: { id },
+      include: { model: ProjectTechnology },
+    });
 
     // if project not found
     if (!project) return res.send(404);
