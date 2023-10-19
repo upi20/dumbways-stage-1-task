@@ -98,7 +98,32 @@
 
     <main>
       <section class="container mb-5 pb-5">
-        <div class="card mt-5 shadow border-0">
+        <div class="mt-5">
+          {{#if alertSuccess}}
+            <div class="alert alert-success border-0 alert-dismissible fade show" role="alert">
+              <strong>Success <i class="fa-solid fa-check"></i></strong>
+              {{alertMessage}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {{/if}}
+
+          {{#if alertDanger}}
+            <div class="alert alert-danger border-0 alert-dismissible fade show" role="alert">
+              <strong>Failed <i class="fa-solid fa-xmark"></i></strong>
+              {{alertMessage}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {{/if}}
+
+          {{#if alertWarning}}
+            <div class="alert alert-warning border-0 alert-dismissible fade show" role="alert">
+              <strong>Warning <i class="fa-solid fa-triangle-exclamation"></i></strong>
+              {{alertMessage}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {{/if}}
+        </div>
+        <div class="card shadow border-0">
           <div class="card-body">
             <div class="row">
               <div class="col-xl-9 col-lg-7 col-md-6">
@@ -167,81 +192,58 @@
       </section>
 
       <!-- lists my project -->
-      <section class="mt-5 pt-5 bg-body-secondary">
-        <div class="container">
-          {{#if alertSuccess}}
-            <div class="alert alert-success border-0 alert-dismissible fade show" role="alert">
-              <strong>Success <i class="fa-solid fa-check"></i></strong>
-              {{alertMessage}}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          {{/if}}
-
-          {{#if alertDanger}}
-            <div class="alert alert-danger border-0 alert-dismissible fade show" role="alert">
-              <strong>Failed <i class="fa-solid fa-xmark"></i></strong>
-              {{alertMessage}}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          {{/if}}
-
-          {{#if alertWarning}}
-            <div class="alert alert-warning border-0 alert-dismissible fade show" role="alert">
-              <strong>Warning <i class="fa-solid fa-triangle-exclamation"></i></strong>
-              {{alertMessage}}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          {{/if}}
-        </div>
-
-        <div class="container">
-          <!-- Button trigger modal -->
-          <h2 class="h4 fw-bold text-center mb-5">MY PROJECT</h2>
-          <div class="row" id="projects-list">
-            {{#each projects}}
-              <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="card border-0 shadow-sm mb-4 card-hover">
-                  <div class="card-body">
-                    <img src="{{this.image}}" alt="{{this.name}}" class="w-100 rounded" />
-                    <div class="mt-2">
-                      <a class="h5 fw-bold text-decoration-none" href="/project/{{this.id}}">
-                        {{this.name}}
-                      </a>
-                      <p class="mt-2">{{this.duration}}</p>
-                      <p>{{this.description}}</p>
-                    </div>
-                    <div class="py-2">
-                      {{#each this.ProjectTechnologies}}
-                        <span class="fs-2 me-3">{{{this.Technology.icon}}}</span>
-                      {{/each}}
-                      {{#each this.technologies}}
-                        <span class="fs-2 me-3">{{{this.icon}}}</span>
-                      {{/each}}
-                    </div>
-                    <div class="row">
-                      <div class="col-6">
-                        <a href="/project/{{this.id}}/edit" class="btn btn-primary rounded w-100">
-                          Edit
+      {{#if projects.length}}
+        <section class="mt-5 pt-5 bg-body-secondary">
+          <div class="container">
+            <!-- Button trigger modal -->
+            <h2 class="h4 fw-bold text-center mb-5">MY PROJECT</h2>
+            <div class="row" id="projects-list">
+              {{#each projects}}
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                  <div class="card border-0 shadow-sm mb-4 card-hover">
+                    <div class="card-body">
+                      <img src="{{this.image}}" alt="{{this.name}}" class="w-100 rounded" />
+                      <div class="mt-2">
+                        <a class="h5 fw-bold text-decoration-none" href="/project/{{this.id}}">
+                          {{this.name}}
                         </a>
+                        <p class="mt-2">{{this.duration}}</p>
+                        <p><i class="fa-solid fa-user me-1"></i>{{this.User.name}}</p>
+                        <p>{{this.description}}</p>
                       </div>
-                      <div class="col-6">
-                        <button
-                          class="btn btn-danger rounded w-100"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalDelete"
-                          onclick="deleteProject('{{this.id}}')"
-                        >
-                          Delete
-                        </button>
+                      <div class="py-2">
+                        {{#each this.ProjectTechnologies}}
+                          <span class="fs-2 me-3">{{{this.Technology.icon}}}</span>
+                        {{/each}}
+                        {{#each this.technologies}}
+                          <span class="fs-2 me-3">{{{this.icon}}}</span>
+                        {{/each}}
+                      </div>
+                      <div class="row">
+                        <div class="col-6">
+                          <a href="/project/{{this.id}}/edit" class="btn btn-primary rounded w-100">
+                            Edit
+                          </a>
+                        </div>
+                        <div class="col-6">
+                          <button
+                            class="btn btn-danger rounded w-100"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modalDelete"
+                            onclick="deleteProject('{{this.id}}')"
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            {{/each}}
+              {{/each}}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      {{/if}}
     </main>
     <footer class="container">
       <div class="dark-mode-float position-fixed d-block d-lg-none">

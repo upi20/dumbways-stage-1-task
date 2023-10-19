@@ -116,7 +116,6 @@
               {{project.duration}}
             </span>
             <br />
-            <br />
             <h3>Technologies</h3>
             <div class="row">
               {{#each project.ProjectTechnologies}}
@@ -128,6 +127,12 @@
                 </div>
               {{/each}}
             </div>
+            <br />
+            <h3>Author</h3>
+            <span class="mt-2 d-block">
+              <i class="fa-solid fa-user me-2"></i>
+              {{project.User.name}}
+            </span>
           </div>
         </div>
         <article class="mt-3">

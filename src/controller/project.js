@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const durationCalculate = require("../helper/duration-calculate");
-const { Technology, Project, ProjectTechnology } = require("../database/models");
+const { Technology, Project, ProjectTechnology, User } = require("../database/models");
 const sequelize = require("../helper/sequelize");
 
 const formatDate = (date = "") => {
@@ -12,11 +12,21 @@ const formatDate = (date = "") => {
 
 module.exports = {
   view: async (req, res) => {
+    // check autentication
+    if (!req.session.isLogin) return res.redirect("/login");
+    const userId = req.session.authUser.id;
+
     const { id } = req.params;
     // get by id
     const project = await Project.findOne({
-      where: { id },
-      include: { model: ProjectTechnology, include: { model: Technology } },
+      where: { id, userId },
+      include: [
+        {
+          model: ProjectTechnology,
+          include: { model: Technology },
+        },
+        { model: User },
+      ],
     });
 
     // if project not found
@@ -26,7 +36,11 @@ module.exports = {
     project.duration = durationCalculate(project.startDate, project.endDate);
     project.startDateStr = formatDate(project.startDate);
     project.endDateStr = formatDate(project.endDate);
-    res.render("project-detail", { project, isLogin: req.session.isLogin, loginUser: req.session.authUser });
+    res.render("project-detail", {
+      project,
+      isLogin: req.session.isLogin,
+      loginUser: req.session.authUser,
+    });
   },
 
   add: async (req, res) => {
@@ -57,10 +71,14 @@ module.exports = {
   },
 
   edit: async (req, res) => {
+    // check autentication
+    if (!req.session.isLogin) return res.redirect("/login");
+
     const { id } = req.params;
+    const userId = req.session.authUser.id;
     // get by id
     const project = await Project.findOne({
-      where: { id },
+      where: { id, userId },
       include: { model: ProjectTechnology },
     });
 
@@ -98,6 +116,10 @@ module.exports = {
   },
 
   store: async (req, res) => {
+    // check autentication
+    if (!req.session.isLogin) return res.redirect("/login");
+    const userId = req.session.authUser.id;
+
     // desctructur data
     const { name, description } = req.body;
 
@@ -130,6 +152,7 @@ module.exports = {
           startDate: req.body["start-date"],
           endDate: req.body["end-date"],
           description,
+          userId,
         },
         { transaction: t }
       );
@@ -152,6 +175,10 @@ module.exports = {
   },
 
   update: async (req, res) => {
+    // check autentication
+    if (!req.session.isLogin) return res.redirect("/login");
+    const userId = req.session.authUser.id;
+
     // desctructur data from request data
     const { name, description } = req.body;
     const { id } = req.params;
@@ -166,7 +193,7 @@ module.exports = {
     const t = await sequelize.transaction();
     try {
       // check data exists and permissions
-      const project = await Project.findOne({ where: { id } });
+      const project = await Project.findOne({ where: { id, userId } });
       // if project not found
       if (!project) return res.send(404);
 
@@ -217,6 +244,10 @@ module.exports = {
   },
 
   delete: async (req, res) => {
+    // check autentication
+    if (!req.session.isLogin) return res.redirect("/login");
+    const userId = req.session.authUser.id;
+
     const { id } = req.params;
     // get by id
     const project = await Project.findOne({
