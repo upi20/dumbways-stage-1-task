@@ -17,7 +17,7 @@ const {
   update: updateProject,
 } = require("./src/controller/project");
 
-const { loginView } = require("./src/controller/auth");
+const { loginView, registerView } = require("./src/controller/auth");
 
 // auth and session
 const bcrypt = require("bcrypt");
@@ -68,6 +68,7 @@ app.post("/project/:id/edit", updateProject);
 
 // login
 app.get("/login", loginView);
+app.get("/register", registerView);
 
 app.get("/tes", async function (req, res) {
   const pass = "12345678";

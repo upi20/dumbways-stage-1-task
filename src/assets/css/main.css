@@ -1,34 +1,44 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 /* #d3d3d3 */
 body {
-    font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .text-justify {
-    text-align: justify;
+  text-align: justify;
 }
 
 .card-hover:hover {
-    transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12), 0.3s box-shadow,
-        0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
-    transform: scale(1.02);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12), 0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
 }
 
 @media only screen and (min-width: 576px) {
-    .form-project {
-        width: 458px;
-    }
+  .form-project {
+    width: 458px;
+  }
 }
 
 @media only screen and (max-width: 991px) {
-    main {
-        padding-bottom: 70px;
-    }
+  main {
+    padding-bottom: 70px;
+  }
+
+  .dark-mode-float {
+    bottom: 95px;
+    right: 16;
+  }
 }
 
 @media only screen and (max-width: 575px) {
-    main {
-        padding-bottom: 50px;
-    }
+  main {
+    padding-bottom: 50px;
+  }
+
+  .dark-mode-float {
+    bottom: 65px;
+    right: 12px;
+  }
 }

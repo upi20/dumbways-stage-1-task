@@ -56,17 +56,26 @@
               <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/project/add">Add Project</a>
+              <a class="nav-link" aria-current="page" href="/project/add">Add Project</a>
             </li>
-            <!--  <li class="nav-item">
-                            <a class="nav-link" href="/testimonial">Testimonials</a>
-                        </li> -->
           </ul>
-          <a href="/contact" class="btn btn-success">Contact Me</a>
+          <ul class="navbar-nav d-md-flex justify-content-end">
+            <li class="nav-item">
+              <a href="/register" class="nav-link">Register</a>
+            </li>
+            <li class="nav-item">
+              <a href="/login" class="nav-link active">Login</a>
+            </li>
+            <li class="nav-item">
+              <a href="/contact" class="btn btn-success btn-sm mt-1">Contact Me</a>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-outline-secondary d-none d-lg-block switch-mode ms-2 mt-1">
+                <i class="fa-regular fa-sun"></i>
+              </button>
+            </li>
+          </ul>
         </div>
-        <button class="btn btn-secodnary d-none d-lg-block switch-mode">
-          <i class="fa-regular fa-sun"></i>
-        </button>
       </div>
     </nav>
 
@@ -132,7 +141,17 @@
       </section>
     </main>
     <footer class="container">
-      <nav class="fixed-bottom fw-100 bg-light-subtle d-flex flex-row shadow-lg d-lg-none justify-content-around">
+      <div class="dark-mode-float position-fixed d-block d-lg-none">
+        <div class="d-flex flex-column text-center">
+          <a
+            href="javascript:void(0)"
+            class="fs-3 m-2 mb-sm-0 text-white switch-mode btn btn-secondary"
+            aria-label="Mode"
+          >
+          </a>
+        </div>
+      </div>
+      <nav class="fixed-bottom fw-100 bg-light-subtle d-flex flex-row shadow-lg d-lg-none justify-content-around py-2">
         <div class="d-flex flex-column text-center">
           <a href="/" class="fs-3 m-2 text-body-emphasis mb-sm-0" aria-label="Home">
             <i class="fa-solid fa-house"></i>
@@ -140,17 +159,11 @@
           <span class="d-none d-sm-inline">Home</span>
         </div>
         <div class="d-flex flex-column text-center">
-          <a href="/project/add" class="fs-3 m-2 text-primary mb-sm-0" aria-label="Add Project">
+          <a href="/project/add" class="fs-3 m-2 text-body-emphasis mb-sm-0" aria-label="Add Project">
             <i class="fa-solid fa-plus"></i>
           </a>
           <span class="d-none d-sm-inline">Add Project</span>
         </div>
-        <!-- <div class="d-flex flex-column text-center">
-                    <a href="/testimonials.html" class="fs-3 m-2 text-body-emphasis mb-sm-0" aria-label="Testimonials">
-                        <i class="fa-solid fa-user-pen"></i>
-                    </a>
-                    <span class="d-none d-sm-inline">Testimonials</span>
-                </div> -->
         <div class="d-flex flex-column text-center">
           <a href="/contact" class="fs-3 m-2 text-body-emphasis mb-sm-0" aria-label="Contact Me">
             <i class="fa-brands fa-whatsapp"></i>
@@ -158,9 +171,10 @@
           <span class="d-none d-sm-inline">Contact Me</span>
         </div>
         <div class="d-flex flex-column text-center">
-          <a href="javascript:void(0)" class="fs-3 m-2 mb-sm-0 text-body-emphasis switch-mode" aria-label="Mode">
+          <a href="/login" class="fs-3 m-2 text-primary mb-sm-0" aria-label="Login">
+            <i class="fa-solid fa-user"></i>
           </a>
-          <span class="d-none d-sm-inline">Mode</span>
+          <span class="d-none d-sm-inline">Login</span>
         </div>
       </nav>
     </footer>
