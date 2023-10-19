@@ -17,11 +17,9 @@ const {
   update: updateProject,
 } = require("./src/controller/project");
 
-const { loginView, registerView } = require("./src/controller/auth");
+const { loginView, registerView, registerSend, loginCheck, logOut } = require("./src/controller/auth");
 
-// auth and session
-const bcrypt = require("bcrypt");
-const flash = require("express-flash");
+// session
 const session = require("express-session");
 
 // setup server
@@ -44,14 +42,17 @@ app.use(express.urlencoded({ extended: false }));
 // setup session
 app.use(
   session({
-    cookie: { secure: true, httpOnly: true, maxAge: 1000 * 60 * 60 * 2 },
+    cookie: {
+      httpOnly: true,
+      secure: false,
+      maxAge: 1000 * 60 * 60 * 2,
+    },
     store: new session.MemoryStore(),
     saveUninitialized: true,
     resave: false,
     secret: "100319",
   })
 );
-app.use(flash());
 
 // routing
 app.get("/", home);
@@ -68,22 +69,10 @@ app.post("/project/:id/edit", updateProject);
 
 // login
 app.get("/login", loginView);
+app.post("/login", loginCheck);
 app.get("/register", registerView);
-
-app.get("/tes", async function (req, res) {
-  const pass = "12345678";
-  // encryption
-  await bcrypt.hash(pass, 10, function (err, hash) {
-    // check
-    const check = bcrypt.compareSync(pass, hash);
-    console.log(check);
-    console.log(hash);
-
-    // set cookie
-  });
-
-  return res.send(200);
-});
+app.post("/register", registerSend);
+app.get("/logout", logOut);
 
 // // example render template html without template engine
 // app.get("/testes", (req, res) => {

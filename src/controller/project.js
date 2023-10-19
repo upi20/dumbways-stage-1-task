@@ -32,7 +32,7 @@ module.exports = {
     project.duration = durationCalculate(project.startDate, project.endDate);
     project.startDateStr = formatDate(project.startDate);
     project.endDateStr = formatDate(project.endDate);
-    res.render("project-detail", { project });
+    res.render("project-detail", { project, isLogin: req.session.isLogin, loginUser: req.session.authUser });
   },
 
   add: async (req, res) => {
@@ -48,7 +48,15 @@ module.exports = {
         </div> `;
     });
 
-    res.render("project", { technologiesHtml, alertSuccess, alertDanger, alertWarning, alertMessage: alertmessage });
+    res.render("project", {
+      technologiesHtml,
+      alertSuccess,
+      alertDanger,
+      alertWarning,
+      alertMessage: alertmessage,
+      isLogin: req.session.isLogin,
+      loginUser: req.session.authUser,
+    });
   },
 
   edit: async (req, res) => {
@@ -91,6 +99,8 @@ module.exports = {
       alertWarning,
       alertMessage: alertmessage,
       project,
+      isLogin: req.session.isLogin,
+      loginUser: req.session.authUser,
     });
   },
 

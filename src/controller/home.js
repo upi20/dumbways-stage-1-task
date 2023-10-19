@@ -20,12 +20,14 @@ module.exports = async (req, res) => {
     e.duration = durationCalculate(e.startDate, e.endDate);
     return e;
   });
-
+  console.log(req.session);
   return res.render("home", {
     alertSuccess,
     alertDanger,
     alertWarning,
     alertMessage: alertmessage,
     projects: projectsRender,
+    isLogin: req.session.isLogin,
+    loginUser: req.session.authUser,
   });
 };

@@ -2,7 +2,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login | Personal Web</title>
+    <title>Register | Personal Web</title>
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png" />
@@ -112,14 +112,25 @@
             <h2 class="h4 fw-bold text-center">REGISTER YOUR ACCOUNT</h2>
             <br />
             <div class="mb-3">
+              <label for="name" class="form-label fw-bold mb-0">Name</label>
+              <input
+                type="text"
+                class="form-control border-0 shadow-sm w-100"
+                id="name"
+                name="name"
+                required
+                value="{{name}}"
+              />
+            </div>
+            <div class="mb-3">
               <label for="email" class="form-label fw-bold mb-0">Email</label>
               <input
                 type="email"
                 class="form-control border-0 shadow-sm w-100"
                 id="email"
                 name="email"
-                value="{{project.name}}"
                 required
+                value="{{email}}"
               />
             </div>
             <div class="mb-3">
@@ -129,12 +140,11 @@
                 class="form-control border-0 shadow-sm w-100"
                 id="password"
                 name="password"
-                value="{{project.name}}"
                 required
               />
             </div>
             <div class="text-end mt-3">
-              <button class="btn btn-dark btn-block w-100" type="submit">Login</button>
+              <button class="btn btn-dark btn-block" type="submit">Submit</button>
             </div>
           </form>
         </div>
@@ -184,6 +194,5 @@
       crossorigin="anonymous"
     ></script>
     <script src="/js/dark-mode.js"></script>
-    <script src="/js/project.js"></script>
   </body>
 </html>
