@@ -3,7 +3,6 @@ const path = require("path");
 const { getProjectsData, saveProjectsData } = require("../mocks/projects");
 const durationCalculate = require("../helper/duration-calculate");
 const { Technology, Project, ProjectTechnology } = require("../database/models");
-const technologies = require("../mocks/technologies");
 const sequelize = require("../helper/sequelize");
 
 const formatDate = (date = "") => {
@@ -44,13 +43,7 @@ module.exports = {
   add: async (req, res) => {
     const { alert, alertmessage } = req.query;
     const [alertSuccess, alertDanger, alertWarning] = [alert == 1, alert == 2, alert == 3];
-    let technologies = [];
-    try {
-      // get data from database
-      technologies = await Technology.findAll({ order: [["name", "ASC"]] });
-    } catch (error) {
-      return res.status(500).json(error);
-    }
+    const technologies = await Technology.findAll({ order: [["name", "ASC"]] });
 
     let technologiesHtml = "";
     technologies.forEach((e) => {
@@ -106,17 +99,12 @@ module.exports = {
     });
   },
 
-  store: (req, res) => {
+  store: async (req, res) => {
     // desctructur data
     const { name, description } = req.body;
 
-    // id
-    const projects = getProjectsData();
-    let newId = 1;
-    if (projects.length > 0) newId = projects[projects.length - 1].id + 1;
-
     // technologies
-    const techLists = techParse(JSON.parse(req.body.technologies));
+    const techLists = JSON.parse(req.body.technologies);
     if (techLists.length < 1) {
       return res.redirect("/project/add?alert=2&alertmessage=Technologies must be selected at least 1");
     }
@@ -133,18 +121,34 @@ module.exports = {
       return res.redirect("/project/add?alert=2&alertmessage=Images are required");
     }
 
-    // insert data
-    projects.push({
-      id: newId,
-      name,
-      image: imagePath,
-      technologies: techLists,
-      startDate: req.body["start-date"],
-      endDate: req.body["end-date"],
-      description,
-    });
+    // initial transaction
+    const t = await sequelize.transaction();
+    try {
+      // Create a new project
+      const project = await Project.create(
+        {
+          name,
+          image: imagePath,
+          startDate: req.body["start-date"],
+          endDate: req.body["end-date"],
+          description,
+        },
+        { transaction: t }
+      );
 
-    saveProjectsData(projects);
+      // insert technologies
+      await ProjectTechnology.bulkCreate(
+        techLists.map((e) => ({ projectId: project.id, technologyId: e })),
+        { transaction: t }
+      );
+
+      // finish transaction
+      await t.commit();
+    } catch (error) {
+      await t.rollback();
+      console.log(error);
+      return res.send(500);
+    }
 
     return res.redirect("/project/add?alert=1&alertmessage=Data Successfully Saved");
   },
@@ -207,7 +211,8 @@ module.exports = {
       await t.commit();
     } catch (error) {
       await t.rollback();
-      return res.status(500).send(error);
+      console.log(error);
+      return res.send(500);
     }
 
     return res.redirect(`/project/${id}/edit?alert=1&alertmessage=Data Successfully Edited`);
