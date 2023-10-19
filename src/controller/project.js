@@ -1,6 +1,5 @@
 const fs = require("fs");
 const path = require("path");
-const { getProjectsData, saveProjectsData } = require("../mocks/projects");
 const durationCalculate = require("../helper/duration-calculate");
 const { Technology, Project, ProjectTechnology } = require("../database/models");
 const sequelize = require("../helper/sequelize");
@@ -17,22 +16,13 @@ const formatDateInput = (date = "") => {
   return [date.getFullYear(), addZero(date.getMonth() + 1), addZero(date.getDate())].join("-");
 };
 
-const techParse = (techs = []) => {
-  const results = [];
-  techs.forEach((id) => {
-    const find = technologies.find((e) => e.id == id);
-    if (find) results.push(find);
-  });
-  return results;
-};
-
 module.exports = {
   view: async (req, res) => {
     const { id } = req.params;
     // get by id
     const project = await Project.findOne({
       where: { id },
-      include: { model: ProjectTechnology },
+      include: { model: ProjectTechnology, include: { model: Technology } },
     });
 
     // if project not found
