@@ -219,23 +219,25 @@
                           <span class="fs-2 me-3">{{{this.icon}}}</span>
                         {{/each}}
                       </div>
-                      <div class="row">
-                        <div class="col-6">
-                          <a href="/project/{{this.id}}/edit" class="btn btn-primary rounded w-100">
-                            Edit
-                          </a>
+                      {{#if this.canEdit}}
+                        <div class="row">
+                          <div class="col-6">
+                            <a href="/project/{{this.id}}/edit" class="btn btn-primary rounded w-100">
+                              Edit
+                            </a>
+                          </div>
+                          <div class="col-6">
+                            <button
+                              class="btn btn-danger rounded w-100"
+                              data-bs-toggle="modal"
+                              data-bs-target="#modalDelete"
+                              onclick="deleteProject('{{this.id}}')"
+                            >
+                              Delete
+                            </button>
+                          </div>
                         </div>
-                        <div class="col-6">
-                          <button
-                            class="btn btn-danger rounded w-100"
-                            data-bs-toggle="modal"
-                            data-bs-target="#modalDelete"
-                            onclick="deleteProject('{{this.id}}')"
-                          >
-                            Delete
-                          </button>
-                        </div>
-                      </div>
+                      {{/if}}
                     </div>
                   </div>
                 </div>

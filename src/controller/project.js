@@ -14,12 +14,11 @@ module.exports = {
   view: async (req, res) => {
     // check autentication
     if (!req.session.isLogin) return res.redirect("/login");
-    const userId = req.session.authUser.id;
 
     const { id } = req.params;
     // get by id
     const project = await Project.findOne({
-      where: { id, userId },
+      where: { id },
       include: [
         {
           model: ProjectTechnology,
@@ -247,11 +246,11 @@ module.exports = {
     // check autentication
     if (!req.session.isLogin) return res.redirect("/login");
     const userId = req.session.authUser.id;
-
     const { id } = req.params;
+
     // get by id
     const project = await Project.findOne({
-      where: { id },
+      where: { id, userId },
       include: { model: ProjectTechnology },
     });
     if (!project) return res.send(404);
