@@ -10,3 +10,8 @@ Setelah mempelajari terkait membuat halaman blog yang dapat interaktif menggunak
 ![Submit](./assets/img/result1.png)  
 ![Submit](./assets/img/result2.png)  
 ![Submit](./assets/img/result3.png)
+
+npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all
+
+npx sequelize-cli seed:generate --name User
+npx sequelize-cli model:generate --name User --attributes name:string,email:string,password:string
